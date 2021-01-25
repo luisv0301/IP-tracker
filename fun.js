@@ -1,43 +1,49 @@
 const apiKey = "at_vJkuXvGXTDEwY75nLt95iVtlIBYKP";
 const input = document.getElementById("inp");
 const button = document.getElementById("button");
-const provider = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+
 let parent = document.getElementById("parent");
-let myMap;
-let data;
 let inputValue;
 
 
 
 
-const createMap = () => {
-    let latitude = data.location.lat;
-    let longitude = data.location.lng;
+const createMap = (lat, lng) => {
     
-    myMap = L.map("map").setView([`${latitude}`, `${longitude}`], 13);
+    const provider = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+    
+//    checking if map already exists
+    
+    let container = L.DomUtil.get("map");
+  if (container != null) {
+    container._leaflet_id = null;
+  }
+//    painting map
+    
+    let map = L.map("map").setView([lat, lng], 13);
     L.tileLayer(`${provider}`, {
     maxZoom: 18,
-}).addTo(myMap)
+}).addTo(map)
     
-    let marcador = L.marker([`${latitude}`, `${longitude}`]).addTo(myMap);
+    let marcador = L.marker([lat, lng]).addTo(map);
 }
 
-const paintData = () =>{
+const paintData = (country, city, isp) =>{
     
     parent.innerHTML = ` 
                 
                 <div class="info">
                 <div class="pais">
                     <h3>País</h3>
-                    <p class="pais_p">${data.location.country}</p>
+                    <p class="pais_p">${country}</p>
                 </div>
                 <div class="region">
-                    <h3>Región</h3>
-                    <p class="region_p">${data.location.region}</p>
+                    <h3>Ciudad</h3>
+                    <p class="region_p">${city}</p>
                 </div>
                 <div class="isp">
                     <h3>Proveedor de internet</h3>
-                    <p class="isp_p">${data.isp} </p>
+                    <p class="isp_p">${isp} </p>
                 </div>
                </div>
              `
@@ -50,9 +56,13 @@ const getData = async () => {
     let response = await fetch(`https://geo.ipify.org/api/v1?apiKey=${apiKey}&ipAddress=${inputValue}`);
     let responseJson = await response.json();
     data = responseJson;
+    const {lat, lng} = data.location;
+    const {isp, location: {country, region, city}} = data;
+    
+     
+    paintData(country, city, isp);
+    createMap(lat, lng);
     button.innerHTML = ` <i class="fas fa-search"></i>`; 
-    paintData();
-    createMap();
 }
 
 button.addEventListener("click", () =>{

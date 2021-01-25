@@ -187,8 +187,25 @@ svg#freepik_stories-search.animated #freepik--magnifiyng-glass--inject-2 {
     }
 }
 
-@media (max-width: 389px) {
+@media (max-width: 385px) {
     html {
         font-size: 10px;
     }
+    
+    .formulario{ 
+        width: 80%;
+    height: 3.7rem;
+    }
+    
+    .button{
+    font-size: 1.9rem;
+    width: 4.6rem;
+    }
+    
+    .tittle {
+    font-size: 2rem;
 }
+    .input {
+    font-size: 1.5rem;
+
+   
