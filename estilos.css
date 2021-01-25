@@ -1,0 +1,194 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+
+
+}
+
+body {
+    font-family: poppins;
+    background-color: background: #56CCF2;
+    background: -webkit-linear-gradient(to right, #2F80ED, #56CCF2);
+    background: linear-gradient(to right, #2F80ED, #56CCF2);
+}
+
+.cont {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+
+}
+
+.head {
+
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tittle {
+    color: white;
+    font-size: 2.5rem;
+}
+
+.formulario {
+    height: 3rem;
+    position: relative;
+    width: 45%;
+    margin-top: 1.1rem;
+}
+
+.input,
+.button {
+    font-size: 1.2rem;
+    outline: none;
+    border: none;
+    position: absolute;
+    height: 100%;
+    padding: 0.6rem 1rem;
+}
+
+.input.error {
+    background-color: #fac0c0;
+}
+
+.button {
+    color: white;
+    background: #2F80ED;
+    border-bottom-right-radius: 9px;
+    border-top-right-radius: 9px;
+    right: 0;
+}
+
+.button:hover {
+    background: -webkit-linear-gradient(to right, #2F80ED, #56CCF2);
+    background: linear-gradient(to right, #2F80ED, #56CCF2);
+}
+
+.input {
+    border-radius: 9px;
+    width: 100%;
+
+}
+
+.parent_info {
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.info {
+
+    padding: 1.4rem;
+    position: absolute;
+    z-index: 100;
+    width: 60%;
+    height: auto;
+    background-color: aliceblue;
+    border-radius: 7px;
+    top: 28%;
+    box-shadow: 3px 9px 14px hsla(197, 9%, 40%, 0.4),
+        5px 22px 18px 1px hsla(197, 9%, 40%, 0.25);
+    transition: all 3s ease;
+}
+
+
+.region,
+.isp {
+    margin-top: 1rem;
+}
+
+h3 {
+    font-size: 1.6rem;
+}
+
+.region_p,
+.pais_p,
+.isp_p {
+    font-size: 1.3rem;
+}
+
+.map {
+
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 70%;
+
+}
+
+.map svg {
+
+    width: 65%;
+}
+
+svg#freepik_stories-search:not(.animated) .animable {
+    opacity: 0;
+}
+
+svg#freepik_stories-search.animated #freepik--Locator--inject-2 {
+    animation: 3s Infinite linear floating;
+    animation-delay: 0s;
+}
+
+svg#freepik_stories-search.animated #freepik--magnifiyng-glass--inject-2 {
+    animation: 1.5s Infinite linear floating;
+    animation-delay: 0s;
+}
+
+@keyframes floating {
+    0% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+
+
+
+@media (max-width: 627px) {
+
+    html {
+        font-size: 12px;
+    }
+
+    .formulario {
+        width: 65%;
+
+    }
+}
+
+@media (max-width: 493px) {
+    .info {
+        width: 80%;
+    }
+
+    .tittle {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 389px) {
+    html {
+        font-size: 10px;
+    }
+}
