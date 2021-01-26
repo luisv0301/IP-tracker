@@ -1,6 +1,8 @@
 const apiKey = "at_vJkuXvGXTDEwY75nLt95iVtlIBYKP";
 const input = document.getElementById("inp");
 const button = document.getElementById("button");
+const errMessage = document.getElementById("err");
+
 
 let parent = document.getElementById("parent");
 let inputValue;
@@ -9,22 +11,22 @@ let inputValue;
 
 
 const createMap = (lat, lng) => {
-    
+
     const provider = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
-    
-//    checking if map already exists
-    
+
+    //    checking if map already exists
+
     let container = L.DomUtil.get("map");
-  if (container != null) {
-    container._leaflet_id = null;
-  }
-//    painting map
-    
+    if (container != null) {
+        container._leaflet_id = null;
+    }
+    //    painting map
+
     let map = L.map("map").setView([lat, lng], 13);
     L.tileLayer(`${provider}`, {
-    maxZoom: 18,
-}).addTo(map)
-    
+        maxZoom: 18,
+    }).addTo(map)
+
     let marcador = L.marker([lat, lng]).addTo(map);
 }
 
@@ -62,17 +64,22 @@ const getData = async () => {
      
     paintData(country, city, isp);
     createMap(lat, lng);
+    input.value = "";
     button.innerHTML = ` <i class="fas fa-search"></i>`; 
 }
 
 button.addEventListener("click", () =>{
+    
     inputValue = input.value;
-    if(inputValue){
+    if(/^((25[0-5]|(2[0-4]|1[0-9]|[1-9]|)[0-9])(\.(?!$)|$)){4}$/.test(inputValue)){
         getData();
     
 }else{
     
-    input.classList.add("error");
+    errMessage.classList.add("act");
+    setTimeout(() => {
+        errMessage.classList.remove("act")
+    }, 3000 )
     }
 })
     

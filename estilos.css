@@ -55,9 +55,21 @@ body {
     padding: 0.6rem 1rem;
 }
 
-.input.error {
-    background-color: #fac0c0;
+
+.err{
+    visibility: hidden;
+    opacity: 0;
+    color: #fcb5b5;
+    font-weight: bold;
+    margin-top: 3rem;
+    transition: all 0.7s ease-in-out;
 }
+
+.err.act{
+    opacity: 1;
+    visibility: visible;
+}
+
 
 .button {
     color: white;
@@ -127,42 +139,10 @@ h3 {
 
 }
 
-.map svg {
+.map img {
 
     width: 65%;
 }
-
-svg#freepik_stories-search:not(.animated) .animable {
-    opacity: 0;
-}
-
-svg#freepik_stories-search.animated #freepik--Locator--inject-2 {
-    animation: 3s Infinite linear floating;
-    animation-delay: 0s;
-}
-
-svg#freepik_stories-search.animated #freepik--magnifiyng-glass--inject-2 {
-    animation: 1.5s Infinite linear floating;
-    animation-delay: 0s;
-}
-
-@keyframes floating {
-    0% {
-        opacity: 1;
-        transform: translateY(0px);
-    }
-
-    50% {
-        transform: translateY(-10px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0px);
-    }
-}
-
-
 
 
 @media (max-width: 627px) {
@@ -192,20 +172,23 @@ svg#freepik_stories-search.animated #freepik--magnifiyng-glass--inject-2 {
         font-size: 10px;
     }
     
-    .formulario{ 
-        width: 80%;
-    height: 3.7rem;
+    .err{
+        margin-top: 4.3rem;
     }
-    
-    .button{
-    font-size: 1.9rem;
-    width: 4.6rem;
-    }
-    
-    .tittle {
-    font-size: 2rem;
-}
-    .input {
-    font-size: 1.5rem;
 
-   
+    .formulario {
+        width: 80%;
+        height: 3.7rem;
+    }
+
+    .button {
+        font-size: 1.9rem;
+        width: 4.6rem;
+    }
+
+    .tittle {
+        font-size: 2rem;
+    }
+
+    .input {
+        font-size: 1.5rem;
